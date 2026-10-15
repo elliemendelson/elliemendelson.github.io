@@ -2,174 +2,237 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Ellie Loew-Mendelson</title>
-  <link rel="icon" href="./elliefavicon.jpg" type="image/x-icon">
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-  <link href='https://fonts.googleapis.com/css?family=Oswald:700' rel='stylesheet' type='text/css'>
+  <title>Ellie Loew-Mendelson</title>
+
   <style>
-    /* Custom styles for the page */
+    :root {
+      --cream: #FFF9EF;
+      --green: #669B4B;
+      --yellow: #ECA602;
+      --lavender: #C2A7D3;
+      --pink: #F26A8D;
+      --red: #BB0523;
+      --burgundy: #880D1E;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: 'Franklin Gothic', sans-serif;
-      background-color: #f9f9f9;
-      color: #333;
+      margin: 0;
+      background: var(--cream);
+      color: var(--burgundy);
+      font-family: Georgia, serif;
     }
 
-    .navbar {
-      background-color: #4a7c59;
-      border: none;
+    .canvas {
       position: relative;
-      margin-bottom: 30px;
-    }    
-
-    .navbar::after {
-      content: '';
-      position: absolute;
-      bottom: -39px; /* Adjust as needed */
-      left: 0;
       width: 100%;
-      height: 40px; /* Adjust height if needed */
-      background: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 40' preserveAspectRatio='none'%3E%3Cpath d='M0,20 C200,0 350,40 500,20 C650,0 850,40 1000,20 L1000,0 L0, 0 Z' fill='%234a7c59'/%3E%3C/svg%3E") repeat-x;
-      background-size: 1000px 100%;
-      z-index: 1;
-    }
-
-
-    .navbar-nav > li > a {
-      color: white !important;
-      position: relative;
+      min-height: 100vh;
       overflow: hidden;
     }
 
-    .navbar-nav > li > a::before {
-      content: '';
+    .site-title {
       position: absolute;
-      top: 0;
-      left: -100%;
+      top: 42%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 1;
+      width: 280px;
+      text-align: center;
+      pointer-events: none;
+    }
+
+    .site-title h1 {
+      margin: 0;
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      line-height: 1.05;
+    }
+
+    .site-title p {
+      font-family: sans-serif;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    .sticker {
+      position: absolute;
+      display: block;
+      width: var(--size, 150px);
+      left: var(--x);
+      top: var(--y);
+      transform: rotate(var(--rotation, 0deg));
+      text-align: center;
+      text-decoration: none;
+      color: var(--burgundy);
+      transition: transform 180ms ease;
+      z-index: 2;
+    }
+
+    .sticker img {
+      display: block;
       width: 100%;
-      height: 100%;
-      background-color: rgba(255,255,255,0.2);
-      transition: left 0.3s ease;
-    }
-    .navbar-nav > li > a:hover::before {
-      left: 0;
+      height: auto;
+      object-fit: contain;
     }
 
-    h1 {
-      font-family: 'Franklin Gothic', sans-serif;
-      font-size: 36px;
-      text-align: center;
-      margin-top: 30px;
-      color: #2c3e50;
+    .sticker span {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 4px 9px;
+      background: var(--cream);
+      border-radius: 8px;
+      font: 600 0.9rem sans-serif;
     }
 
-    h2 {
-      font-family: 'Franklin Gothic', sans-serif;
-      font-size: 20px;
-      text-align: center;
-      color: #000000;
-      margin-bottom: 30px;
+    .sticker:hover,
+    .sticker:focus-visible {
+      transform: rotate(0deg) scale(1.09);
+      z-index: 5;
     }
 
-    .banner-image {
-      width: 100%;
-      max-height: 400px;
-      object-fit: cover;
+    .sticker:focus-visible {
+      outline: 3px solid var(--green);
+      outline-offset: 6px;
+      border-radius: 8px;
     }
 
-    .container {
-      margin-top: 20px;
+    /* Desktop positions: adjust x, y, size, and rotation */
+    .publications {
+      --x: 8%; --y: 10%; --size: 145px; --rotation: -9deg;
     }
 
-    footer {
-      margin-top: 50px;
-      text-align: center;
-      color: #7f8c8d;
-      font-size: 0.9em;
+    .projects {
+      --x: 39%; --y: 7%; --size: 165px; --rotation: 7deg;
+    }
+
+    .outreach {
+      --x: 75%; --y: 13%; --size: 135px; --rotation: 10deg;
+    }
+
+    .cv {
+      --x: 13%; --y: 57%; --size: 125px; --rotation: 8deg;
+    }
+
+    .art {
+      --x: 72%; --y: 55%; --size: 175px; --rotation: -7deg;
+    }
+
+    .contact {
+      --x: 43%; --y: 72%; --size: 120px; --rotation: 5deg;
+    }
+
+    @media (max-width: 650px) {
+      .canvas {
+        min-height: 100vh;
+        padding: 28px 18px 36px;
+        overflow: visible;
+      }
+
+      .site-title {
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
+        width: 100%;
+        margin: 10px auto 30px;
+      }
+
+      .sticker {
+        position: relative;
+        top: auto;
+        left: auto;
+        width: 100%;
+        max-width: 145px;
+        transform: rotate(var(--rotation, 0deg));
+        justify-self: center;
+      }
+
+      .sticker span {
+        font-size: 0.85rem;
+      }
+
+      .sticker img {
+        max-height: 125px;
+      }
+
+      .sticker:hover,
+      .sticker:focus-visible {
+        transform: scale(1.04);
+      }
+
+      .sticker-board {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 28px 16px;
+        align-items: center;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .sticker {
+        transition: none;
+      }
     }
   </style>
 </head>
+
 <body>
+  <main class="canvas">
 
-<!-- Navigation -->
-<nav class="navbar navbar-inverse navbar-static-top" role="navigation">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
+    <div class="site-title">
+      <h1>Ellie<br>Loew-Mendelson</h1>
+      <p>Botany · Ecology · Art</p>
     </div>
 
-    <!-- Collect the nav links -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="./">Home</a></li>
-        <li><a href="publications">Publications</a></li>
-        <li><a href="projects">Projects</a></li>
-        <li><a href="outreach">Outreach</a></li>
-        <li><a href="#">CV</a></li>
-        <li><a href="art-microscopy">Art & Microscopy</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
+    <nav class="sticker-board" aria-label="Main navigation">
 
-<!-- Page Content -->
-<div class="container">
+      <a class="sticker publications"
+         href="publications.html"
+         aria-label="Publications">
+        <img src="icons/publications.png" alt="">
+        <span>Publications</span>
+      </a>
 
-  <!-- Title and Subtitle -->
-  <h1>Ellie Loew-Mendelson</h1>
-  <h2>PhD Student, Heyduk Lab</h2>
+      <a class="sticker projects"
+         href="projects.html"
+         aria-label="Research projects">
+        <img src="icons/projects.png" alt="">
+        <span>Projects</span>
+      </a>
 
-  <!-- Banner Image -->
-  <div>
-    <img src="banner.jpeg" alt="Banner Image" class="banner-image">
-  </div>
+      <a class="sticker outreach"
+         href="outreach.html"
+         aria-label="Science outreach">
+        <img src="icons/outreach.png" alt="">
+        <span>Outreach</span>
+      </a>
 
-  <!---Paragraph-->
-  <div class="container">
+      <a class="sticker cv"
+         href="files/cv.pdf"
+         aria-label="Curriculum vitae">
+        <img src="icons/cv.png" alt="">
+        <span>CV</span>
+      </a>
 
-    <div class="row">
+      <a class="sticker art"
+         href="art-microscopy.html"
+         aria-label="Art and microscopy">
+        <img src="icons/art-microscopy.png" alt="">
+        <span>Art &amp; Microscopy</span>
+      </a>
 
-        <!-- Entries Column -->
-        <div class="col-md-8" style="height: 50vh;">
-            
-            <!-- Main Image -->
-            <img class="img-responsive" src="photo.gif" alt=""><br>
-            
-            <div style="margin-top:3%; text-align:justify;">                
-                <p> I'm a PhD student at the University of Connecticut. This website is in progress; check back later to see some fun and engaging graphics!!! </p>
-            </div>
-        </div> 
+      <a class="sticker contact"
+         href="mailto:your-email@example.com"
+         aria-label="Contact Ellie">
+        <img src="icons/contact.png" alt="">
+        <span>Contact</span>
+      </a>
 
-  <!-- Contact Info and Publications -->
-  <div class="container">
-    <!-- Contact Info on the Sidebar -->
-    <div class="col-md-4", style="height: auto;">
-        <div style="font-family: 'Franklin Gothic', sans-serif; font-size: 32px;"><b>Ellie Loew-Mendelson</b></div><br>
-      <p><b><a href = "mailto: emendelson@uconn.edu">emendelson@uconn.edu</a></b><br>
-      <p>PhD Student - <a href="https://www.kheyduk.net/">Heyduk Lab</a><br>
-      Ecology and Evolutionary Biology<br>
-      University of Connecticut<br>
-      Storrs, CT<br>
-      U.S.A.<br></p>
-    </div>
-
-</div>
-<!-- /.container -->
-
-<!-- Footer -->
-<footer>
-  <p>© Ellie Loew-Mendelson | University of Connecticut</p>
-  <dd><a href="https://www.researchgate.net/profile/Ellie-Mendelson" target="_blank" rel="noopener noreferrer"><img src="researchgate.png"></a>
-    <a href="https://www.linkedin.com/in/ellie-mendelson-88a178195/" target="_blank" rel="noopener noreferrer"><img src="linkedin.png"></a></dd>
-</footer>
-
+    </nav>
+  </main>
 </body>
 </html>
