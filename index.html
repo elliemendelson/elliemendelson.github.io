@@ -2,718 +2,174 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <title>Ellie Loew-Mendelson</title>
+  <link rel="icon" href="./elliefavicon.jpg" type="image/x-icon">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <title>Ellie Loew-Mendelson</title>
-  <link rel="icon" href="./elliefavicon.jpg" type="image/jpeg">
-
-  <!-- Bootstrap for the existing navigation bar -->
-  <link rel="stylesheet"
-        href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-
-  <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Quicksand:wght@400;500;600;700&display=swap"
-        rel="stylesheet">
-
+  <link href='https://fonts.googleapis.com/css?family=Oswald:700' rel='stylesheet' type='text/css'>
   <style>
-    /* ===== GENERAL PAGE ===== */
-
-    * {
-      box-sizing: border-box;
-    }
-
+    /* Custom styles for the page */
     body {
-      margin: 0;
-      font-family: 'Quicksand', sans-serif;
-      background-color: #fff4e5;
-      color: #40364a;
+      font-family: 'Franklin Gothic', sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
     }
-
-    a {
-      color: inherit;
-    }
-
-
-    /* ===== NAVIGATION ===== */
 
     .navbar {
       background-color: #4a7c59;
       border: none;
-      border-radius: 0;
-      margin-bottom: 0;
       position: relative;
-      z-index: 10;
-    }
+      margin-bottom: 30px;
+    }    
 
-    .navbar-inverse .navbar-nav > li > a {
-      color: white;
-      font-weight: 600;
-      transition: background-color 0.2s ease;
-    }
-
-    .navbar-inverse .navbar-nav > li > a:hover,
-    .navbar-inverse .navbar-nav > li > a:focus {
-      background-color: #63966f;
-      color: white;
-    }
-
-    .navbar-inverse .navbar-nav > .active > a,
-    .navbar-inverse .navbar-nav > .active > a:hover {
-      background-color: #386647;
-      color: white;
-    }
-
-    .navbar-inverse .navbar-toggle {
-      border-color: #d5e5d3;
-    }
-
-    .navbar-inverse .navbar-toggle:hover,
-    .navbar-inverse .navbar-toggle:focus {
-      background-color: #386647;
-    }
-
-
-    /* ===== HEADER IMAGE: KEEP AT THE TOP ===== */
-
-    .banner-wrapper {
-      width: 100%;
-      overflow: hidden;
-      background-color: #e6ddce;
-    }
-
-    .banner-image {
-      display: block;
-      width: 100%;
-      height: 320px;
-      object-fit: cover;
-      object-position: center;
-    }
-
-
-    /* ===== PAGE TITLE ===== */
-
-    .page-heading {
-      text-align: center;
-      padding: 32px 20px 8px;
-    }
-
-    .page-heading h1 {
-      font-family: 'Patrick Hand', cursive;
-      font-size: clamp(38px, 5vw, 58px);
-      color: #51405d;
-      margin: 0 0 4px;
-    }
-
-    .page-heading h1 span {
-      color: #ed8da7;
-    }
-
-    .page-heading h2 {
-      font-size: 16px;
-      font-weight: 500;
-      color: #8c748e;
-      margin: 0;
-    }
-
-    .page-heading .subtitle {
-      font-family: 'Patrick Hand', cursive;
-      font-size: 19px;
-      color: #c17b54;
-      margin-top: 12px;
-    }
-
-
-    /* ===== NOTEBOOK BACKGROUND ===== */
-
-    .notebook {
-      position: relative;
-      max-width: 1120px;
-      min-height: 760px;
-      margin: 10px auto 0;
-      padding: 25px 30px 60px;
-      overflow: hidden;
-      background-color: #fff8ee;
-      background-image:
-        radial-gradient(#e8d9c7 0.8px, transparent 0.8px);
-      background-size: 22px 22px;
-      border-radius: 5px;
-    }
-
-
-    /* ===== STICKERS ===== */
-
-    .sticker {
+    .navbar::after {
+      content: '';
       position: absolute;
-      display: flex;
-      flex-direction: column;
-      align-items: stretch;
-      background: white;
-      border: 3px solid white;
-      border-radius: 9px;
-      padding: 9px;
-      box-shadow: 2px 6px 13px rgba(73, 51, 70, 0.18);
-      text-decoration: none;
-      color: #49384f;
-      transition:
-        transform 0.25s ease,
-        box-shadow 0.25s ease;
-      z-index: 2;
-    }
-
-    .sticker:hover,
-    .sticker:focus-visible {
-      transform: rotate(0deg) scale(1.06);
-      box-shadow: 4px 12px 22px rgba(73, 51, 70, 0.25);
-      z-index: 5;
-      color: #49384f;
-      text-decoration: none;
-    }
-
-    .sticker:focus-visible {
-      outline: 3px dashed #df7999;
-      outline-offset: 5px;
-    }
-
-    .sticker img {
-      display: block;
+      bottom: -39px; /* Adjust as needed */
+      left: 0;
       width: 100%;
-      aspect-ratio: 4 / 3;
-      object-fit: cover;
-      border-radius: 4px;
-    }
-
-    .sticker-label {
-      display: block;
-      text-align: center;
-      font-family: 'Patrick Hand', cursive;
-      font-size: 23px;
-      line-height: 1.15;
-      margin-top: 9px;
-    }
-
-    .sticker-caption {
-      display: block;
-      text-align: center;
-      font-size: 11px;
-      margin-top: 5px;
-      color: #987e9c;
-    }
-
-
-    /* ===== INDIVIDUAL STICKER POSITIONS ===== */
-
-    .sticker-photo {
-      width: 245px;
-      top: 75px;
-      left: 7%;
-      transform: rotate(-7deg);
-    }
-
-    .sticker-projects {
-      width: 210px;
-      top: 60px;
-      left: 39%;
-      transform: rotate(6deg);
-    }
-
-    .sticker-publications {
-      width: 205px;
-      top: 320px;
-      left: 29%;
-      transform: rotate(-5deg);
-    }
-
-    .sticker-outreach {
-      width: 210px;
-      top: 300px;
-      left: 63%;
-      transform: rotate(7deg);
-    }
-
-    .sticker-art {
-      width: 225px;
-      top: 490px;
-      left: 8%;
-      transform: rotate(5deg);
-    }
-
-    .sticker-about {
-      width: 220px;
-      top: 520px;
-      left: 60%;
-      transform: rotate(-6deg);
-    }
-
-
-    /* ===== COLORFUL TEXT-ONLY STICKERS ===== */
-
-    .illustration {
-      display: flex;
-      min-height: 115px;
-      align-items: center;
-      justify-content: center;
-      font-size: 55px;
-      border-radius: 5px;
-    }
-
-    .pink-bg {
-      background: #ffe0e8;
-    }
-
-    .yellow-bg {
-      background: #ffedb7;
-    }
-
-    .blue-bg {
-      background: #d8eef2;
-    }
-
-    .purple-bg {
-      background: #e9def9;
-    }
-
-    .green-bg {
-      background: #dfebce;
-    }
-
-
-    /* ===== WASHI TAPE ===== */
-
-    .tape {
-      position: absolute;
-      top: -12px;
-      left: 50%;
-      width: 75px;
-      height: 23px;
-      transform: translateX(-50%) rotate(-7deg);
-      opacity: 0.9;
-      z-index: 4;
-      pointer-events: none;
-    }
-
-    .tape-pink {
-      background: #f5a9c0;
-    }
-
-    .tape-yellow {
-      background: #f6d779;
-      transform: translateX(-50%) rotate(8deg);
-    }
-
-    .tape-blue {
-      background: #9ddbe0;
-      transform: translateX(-50%) rotate(-4deg);
-    }
-
-    .tape-purple {
-      background: #c9b2e8;
-      transform: translateX(-50%) rotate(6deg);
-    }
-
-    .tape-green {
-      background: #b6d8a6;
-      transform: translateX(-50%) rotate(-8deg);
-    }
-
-
-    /* ===== HANDWRITTEN NOTES AND DOODLES ===== */
-
-    .doodle {
-      position: absolute;
-      font-family: 'Patrick Hand', cursive;
-      pointer-events: none;
+      height: 40px; /* Adjust height if needed */
+      background: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 40' preserveAspectRatio='none'%3E%3Cpath d='M0,20 C200,0 350,40 500,20 C650,0 850,40 1000,20 L1000,0 L0, 0 Z' fill='%234a7c59'/%3E%3C/svg%3E") repeat-x;
+      background-size: 1000px 100%;
       z-index: 1;
     }
 
-    .note-one {
-      top: 22px;
-      left: 8%;
-      font-size: 21px;
-      color: #df7794;
-      transform: rotate(-7deg);
+
+    .navbar-nav > li > a {
+      color: white !important;
+      position: relative;
+      overflow: hidden;
     }
 
-    .note-two {
-      top: 240px;
-      left: 65%;
+    .navbar-nav > li > a::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(255,255,255,0.2);
+      transition: left 0.3s ease;
+    }
+    .navbar-nav > li > a:hover::before {
+      left: 0;
+    }
+
+    h1 {
+      font-family: 'Franklin Gothic', sans-serif;
+      font-size: 36px;
+      text-align: center;
+      margin-top: 30px;
+      color: #2c3e50;
+    }
+
+    h2 {
+      font-family: 'Franklin Gothic', sans-serif;
       font-size: 20px;
-      color: #b47b45;
-      transform: rotate(5deg);
+      text-align: center;
+      color: #000000;
+      margin-bottom: 30px;
     }
 
-    .flower {
-      top: 210px;
-      left: 43%;
-      color: #ee8da8;
-      font-size: 48px;
-      transform: rotate(12deg);
+    .banner-image {
+      width: 100%;
+      max-height: 400px;
+      object-fit: cover;
     }
 
-    .star {
-      top: 465px;
-      left: 51%;
-      color: #e5a93e;
-      font-size: 45px;
-      transform: rotate(-10deg);
+    .container {
+      margin-top: 20px;
     }
-
-    .heart {
-      top: 75px;
-      left: 78%;
-      color: #df7794;
-      font-size: 44px;
-      transform: rotate(12deg);
-    }
-
-
-    /* ===== ABOUT / CONTACT SECTION ===== */
-
-    .contact-section {
-      max-width: 850px;
-      margin: 40px auto;
-      padding: 0 25px;
-    }
-
-    .contact-card {
-      background: #fffdf8;
-      border: 2px dashed #e4b7c4;
-      border-radius: 14px;
-      padding: 25px;
-      box-shadow: 2px 5px 12px rgba(73, 51, 70, 0.07);
-    }
-
-    .contact-card h2 {
-      font-family: 'Patrick Hand', cursive;
-      font-size: 30px;
-      margin-top: 0;
-      color: #51405d;
-    }
-
-    .contact-card p {
-      line-height: 1.8;
-    }
-
-    .contact-card a {
-      color: #ad557d;
-      overflow-wrap: anywhere;
-    }
-
-
-    /* ===== FOOTER ===== */
 
     footer {
+      margin-top: 50px;
       text-align: center;
-      padding: 20px 15px 35px;
-      color: #8c748e;
-      font-family: 'Patrick Hand', cursive;
-      font-size: 17px;
-    }
-
-    footer img {
-      width: 30px;
-      height: 30px;
-      object-fit: contain;
-      margin: 8px;
-      transition: transform 0.2s ease;
-    }
-
-    footer img:hover {
-      transform: rotate(-8deg) scale(1.12);
-    }
-
-
-    /* ===== MOBILE LAYOUT ===== */
-
-    @media (max-width: 767px) {
-      .banner-image {
-        height: 210px;
-      }
-
-      .page-heading {
-        padding-top: 25px;
-      }
-
-      .notebook {
-        min-height: 0;
-        padding: 45px 18px;
-        margin: 10px 10px 0;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: flex-start;
-        gap: 30px 18px;
-        overflow: hidden;
-      }
-
-      .sticker {
-        position: relative;
-        top: auto;
-        left: auto;
-        width: calc(50% - 12px);
-        max-width: 245px;
-        min-width: 0;
-        flex: 0 1 calc(50% - 12px);
-      }
-
-      .sticker-photo {
-        transform: rotate(-5deg);
-      }
-
-      .sticker-projects {
-        transform: rotate(5deg);
-      }
-
-      .sticker-publications {
-        transform: rotate(-4deg);
-      }
-
-      .sticker-outreach {
-        transform: rotate(4deg);
-      }
-
-      .sticker-art {
-        transform: rotate(4deg);
-      }
-
-      .sticker-about {
-        transform: rotate(-4deg);
-      }
-
-      .sticker-label {
-        font-size: 19px;
-      }
-
-      .illustration {
-        min-height: 90px;
-        font-size: 42px;
-      }
-
-      .doodle {
-        display: none;
-      }
-
-      .note-one {
-        position: relative;
-        top: auto;
-        left: auto;
-        width: 100%;
-        text-align: center;
-        margin: 0 0 8px;
-      }
-
-      .contact-section {
-        margin-top: 30px;
-      }
-    }
-
-    @media (max-width: 380px) {
-      .notebook {
-        padding: 40px 12px;
-        gap: 25px 12px;
-      }
-
-      .sticker {
-        width: calc(50% - 8px);
-        flex-basis: calc(50% - 8px);
-        padding: 6px;
-      }
-
-      .sticker-label {
-        font-size: 17px;
-      }
-
-      .sticker-caption {
-        font-size: 10px;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .sticker,
-      footer img {
-        transition: none;
-      }
+      color: #7f8c8d;
+      font-size: 0.9em;
     }
   </style>
 </head>
-
 <body>
 
-  <!-- NAVIGATION -->
-  <nav class="navbar navbar-inverse navbar-static-top"
-       role="navigation">
-    <div class="container">
-      <div class="navbar-header">
-        <button type="button"
-                class="navbar-toggle collapsed"
-                data-toggle="collapse"
-                data-target="#main-navigation"
-                aria-expanded="false">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-      </div>
-
-      <div class="collapse navbar-collapse" id="main-navigation">
-        <ul class="nav navbar-nav">
-          <li class="active"><a href="./">Home</a></li>
-          <li><a href="publications">Publications</a></li>
-          <li><a href="projects">Projects</a></li>
-          <li><a href="outreach">Outreach</a></li>
-          <li><a href="cv">CV</a></li>
-          <li><a href="art-microscopy">Art &amp; Microscopy</a></li>
-        </ul>
-      </div>
+<!-- Navigation -->
+<nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
     </div>
-  </nav>
 
+    <!-- Collect the nav links -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="./">Home</a></li>
+        <li><a href="publications">Publications</a></li>
+        <li><a href="projects">Projects</a></li>
+        <li><a href="outreach">Outreach</a></li>
+        <li><a href="#">CV</a></li>
+        <li><a href="art-microscopy">Art & Microscopy</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
 
-  <!-- HEADER IMAGE: REMAINS AT THE TOP -->
-  <div class="banner-wrapper">
-    <img src="header.jpg"
-         alt="Homepage banner"
-         class="banner-image">
+<!-- Page Content -->
+<div class="container">
+
+  <!-- Title and Subtitle -->
+  <h1>Ellie Loew-Mendelson</h1>
+  <h2>PhD Student, Heyduk Lab</h2>
+
+  <!-- Banner Image -->
+  <div>
+    <img src="banner.jpeg" alt="Banner Image" class="banner-image">
   </div>
 
+  <!---Paragraph-->
+  <div class="container">
 
-  <!-- TITLE -->
-  <header class="page-heading">
-    <h1>Ellie Loew-Mendelson <span>✳</span></h1>
-    <h2>PhD Student, Heyduk Lab</h2>
-    <p class="subtitle">A little science, a little art, and everything in between.</p>
-  </header>
+    <div class="row">
 
+        <!-- Entries Column -->
+        <div class="col-md-8" style="height: 50vh;">
+            
+            <!-- Main Image -->
+            <img class="img-responsive" src="photo.gif" alt=""><br>
+            
+            <div style="margin-top:3%; text-align:justify;">                
+                <p> I'm a PhD student at the University of Connecticut. This website is in progress; check back later to see some fun and engaging graphics!!! </p>
+            </div>
+        </div> 
 
-  <!-- STICKER NOTEBOOK HOMEPAGE -->
-  <main class="notebook">
-
-    <p class="doodle note-one">welcome to my little corner of the internet ↘</p>
-
-    <span class="doodle flower">✿</span>
-    <span class="doodle star">✳</span>
-    <span class="doodle heart">♡</span>
-    <span class="doodle note-two">things I'm curious about!</span>
-
-
-    <!-- Main photo -->
-    <a href="about"
-       class="sticker sticker-photo"
-       aria-label="Learn more about Ellie">
-      <span class="tape tape-pink"></span>
-      <img src="photo.gif" alt="A photo of Ellie">
-      <span class="sticker-label">Hello, I'm Ellie!</span>
-      <span class="sticker-caption">a little about me ♡</span>
-    </a>
-
-
-    <!-- Projects -->
-    <a href="projects"
-       class="sticker sticker-projects"
-       aria-label="Explore research projects">
-      <span class="tape tape-yellow"></span>
-      <div class="illustration yellow-bg">🔬</div>
-      <span class="sticker-label">Projects</span>
-      <span class="sticker-caption">questions & discoveries →</span>
-    </a>
-
-
-    <!-- Publications -->
-    <a href="publications"
-       class="sticker sticker-publications"
-       aria-label="Read publications">
-      <span class="tape tape-blue"></span>
-      <div class="illustration blue-bg">📚</div>
-      <span class="sticker-label">Publications</span>
-      <span class="sticker-caption">papers & ideas</span>
-    </a>
-
-
-    <!-- Outreach -->
-    <a href="outreach"
-       class="sticker sticker-outreach"
-       aria-label="Explore outreach">
-      <span class="tape tape-purple"></span>
-      <div class="illustration purple-bg">🌼</div>
-      <span class="sticker-label">Outreach</span>
-      <span class="sticker-caption">science for everyone!</span>
-    </a>
-
-
-    <!-- Art and microscopy -->
-    <a href="art-microscopy"
-       class="sticker sticker-art"
-       aria-label="Explore art and microscopy">
-      <span class="tape tape-green"></span>
-      <div class="illustration green-bg">🎨</div>
-      <span class="sticker-label">Art &amp; Microscopy</span>
-      <span class="sticker-caption">where science meets art</span>
-    </a>
-
-
-    <!-- CV -->
-    <a href="cv"
-       class="sticker sticker-about"
-       aria-label="View CV">
-      <span class="tape tape-pink"></span>
-      <div class="illustration pink-bg">✂️</div>
-      <span class="sticker-label">My CV</span>
-      <span class="sticker-caption">the professional bits</span>
-    </a>
-
-  </main>
-
-
-  <!-- CONTACT INFORMATION -->
-  <section class="contact-section">
-    <div class="contact-card">
-      <h2>Let's connect! ♡</h2>
-
-      <p>
-        I'm a PhD student at the University of Connecticut
-        studying in the Heyduk Lab. This website is a growing
-        collection of my research, outreach, and creative work.
-      </p>
-
-      <p>
-        <strong>Email:</strong>
-        <a href="mailto:emendelson@uconn.edu">emendelson@uconn.edu</a>
-        <br>
-
-        <strong>Lab:</strong>
-        <a href="https://www.kheyduk.net/">Heyduk Lab</a>
-        <br>
-
-        Ecology and Evolutionary Biology<br>
-        University of Connecticut<br>
-        Storrs, CT, U.S.A.
-      </p>
+  <!-- Contact Info and Publications -->
+  <div class="container">
+    <!-- Contact Info on the Sidebar -->
+    <div class="col-md-4", style="height: auto;">
+        <div style="font-family: 'Franklin Gothic', sans-serif; font-size: 32px;"><b>Ellie Loew-Mendelson</b></div><br>
+      <p><b><a href = "mailto: emendelson@uconn.edu">emendelson@uconn.edu</a></b><br>
+      <p>PhD Student - <a href="https://www.kheyduk.net/">Heyduk Lab</a><br>
+      Ecology and Evolutionary Biology<br>
+      University of Connecticut<br>
+      Storrs, CT<br>
+      U.S.A.<br></p>
     </div>
-  </section>
 
+</div>
+<!-- /.container -->
 
-  <!-- FOOTER -->
-  <footer>
-    <p>Made with curiosity &amp; a little bit of glue ✂</p>
-    <p>© Ellie Loew-Mendelson | University of Connecticut</p>
-
-    <a href="https://www.researchgate.net/profile/Ellie-Mendelson"
-       target="_blank"
-       rel="noopener noreferrer"
-       aria-label="ResearchGate">
-      <img src="researchgate.png" alt="ResearchGate">
-    </a>
-
-    <a href="https://www.linkedin.com/in/ellie-mendelson-88a178195/"
-       target="_blank"
-       rel="noopener noreferrer"
-       aria-label="LinkedIn">
-      <img src="linkedin.png" alt="LinkedIn">
-    </a>
-  </footer>
+<!-- Footer -->
+<footer>
+  <p>© Ellie Loew-Mendelson | University of Connecticut</p>
+  <dd><a href="https://www.researchgate.net/profile/Ellie-Mendelson" target="_blank" rel="noopener noreferrer"><img src="researchgate.png"></a>
+    <a href="https://www.linkedin.com/in/ellie-mendelson-88a178195/" target="_blank" rel="noopener noreferrer"><img src="linkedin.png"></a></dd>
+</footer>
 
 </body>
 </html>
-
