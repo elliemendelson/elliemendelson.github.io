@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,9 +9,10 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-  <link href='https://fonts.googleapis.com/css?family=Oswald:700' rel='stylesheet' type='text/css'>
+  <link href="https://fonts.googleapis.com/css?family=Oswald:700" rel="stylesheet" type="text/css">
+
   <style>
-    /* Custom styles for the page */
+    /* Page styles */
     body {
       font-family: 'Franklin Gothic', sans-serif;
       background-color: #f9f9f9;
@@ -22,52 +24,134 @@
       color: #2c3e50;
     }
 
+    /* Navbar background and wavy bottom */
     .navbar {
       background-color: #4a7c59;
       border: none;
       position: relative;
-      margin-bottom: 30px;
-    }    
+      margin-bottom: 50px;
+      border-radius: 0;
+      min-height: 0;
+    }
 
     .navbar::after {
       content: '';
       position: absolute;
-      bottom: -39px; /* Adjust as needed */
+      bottom: -39px;
       left: 0;
       width: 100%;
-      height: 40px; /* Adjust height if needed */
-      background: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 40' preserveAspectRatio='none'%3E%3Cpath d='M0,20 C200,0 350,40 500,20 C650,0 850,40 1000,20 L1000,0 L0, 0 Z' fill='%234a7c59'/%3E%3C/svg%3E") repeat-x;
+      height: 40px;
+      background: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 40' preserveAspectRatio='none'%3E%3Cpath d='M0,20 C200,0 350,40 500,20 C650,0 850,40 1000,20 L1000,0 L0,0 Z' fill='%234a7c59'/%3E%3C/svg%3E") repeat-x;
       background-size: 1000px 100%;
       z-index: 1;
+      pointer-events: none;
     }
 
-
-    .navbar-nav > li > a {
-      color: white !important;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .navbar-nav > li > a::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
+    /* Navigation button container */
+    .navbar .container {
       width: 100%;
-      height: 100%;
-      background-color: rgba(255,255,255,0.2);
-      transition: left 0.3s ease;
-    }
-    .navbar-nav > li > a:hover::before {
-      left: 0;
+      margin: 0 auto;
+      padding: 16px 24px;
+      position: relative;
+      z-index: 2;
     }
 
+    .navbar-header {
+      float: none;
+    }
+
+    .navbar-collapse {
+      padding: 0;
+      border: none;
+      box-shadow: none;
+    }
+
+    .navbar-nav {
+      float: none;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      margin: 0;
+    }
+
+    .navbar-nav > li {
+      float: none;
+      display: block;
+    }
+
+    .navbar-nav > li > a,
+    .navbar-inverse .navbar-nav > li > a {
+      display: inline-block;
+      padding: 10px 20px;
+      background: #C2A7D3;
+      color: #880D1E !important;
+      border: 10px dashed #669B4B;
+      border-radius: 65px;
+      font-weight: 600;
+      text-decoration: none;
+      line-height: 1.4;
+      transition: transform 0.2s ease;
+    }
+
+    .navbar-nav > li:nth-child(2) > a {
+      background: #ECA602;
+      color: #BB0523 !important;
+      border-color: #F26A8D;
+    }
+
+    .navbar-nav > li:nth-child(3) > a {
+      background: #669B4B;
+      color: #880D1E !important;
+      border-color: #880D1E;
+    }
+
+    .navbar-nav > li:nth-child(4) > a {
+      background: #F26A8D;
+      color: #880D1E !important;
+      border-color: #C2A7D3;
+    }
+
+    .navbar-nav > li:nth-child(5) > a {
+      background: #BB0523;
+      color: #F26A8D !important;
+      border-color: #C2A7D3;
+    }
+
+    .navbar-nav > li:nth-child(6) > a {
+      background: #ECA602;
+      color: #880D1E !important;
+      border-color: #BB0523;
+    }
+
+    .navbar-nav > li > a:hover,
+    .navbar-nav > li > a:focus {
+      transform: translateY(-3px);
+      text-decoration: none;
+      filter: brightness(1.05);
+    }
+
+    .navbar-nav > li.active > a,
+    .navbar-inverse .navbar-nav > li.active > a,
+    .navbar-inverse .navbar-nav > li.active > a:hover,
+    .navbar-inverse .navbar-nav > li.active > a:focus {
+      background: #669B4B;
+      color: #880D1E !important;
+      border-color: #880D1E;
+      box-shadow: none;
+    }
+
+    /* Hide the mobile toggle: the buttons wrap instead */
+    .navbar-toggle {
+      display: none;
+    }
 
     .container {
       margin-top: 20px;
     }
 
-    /* Style for project section */
+    /* Project section */
     .project-section {
       background-color: white;
       padding: 20px;
@@ -98,15 +182,42 @@
       color: #7f8c8d;
       font-size: 0.9em;
     }
+
+    footer img {
+      max-width: 40px;
+      height: auto;
+      margin: 5px;
+    }
+
+    @media (max-width: 600px) {
+      .navbar .container {
+        padding: 12px;
+      }
+
+      .navbar-nav {
+        gap: 8px;
+      }
+
+      .navbar-nav > li > a,
+      .navbar-inverse .navbar-nav > li > a {
+        padding: 8px 12px;
+        border-width: 6px;
+        font-size: 13px;
+      }
+    }
   </style>
 </head>
+
 <body>
 
 <!-- Navigation -->
 <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+      <button type="button" class="navbar-toggle collapsed"
+        data-toggle="collapse"
+        data-target="#bs-example-navbar-collapse-1"
+        aria-expanded="false">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -114,14 +225,14 @@
       </button>
     </div>
 
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <div class="collapse navbar-collapse in" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li><a href="./">Home</a></li>
         <li><a href="publications">Publications</a></li>
         <li class="active"><a href="projects">Projects</a></li>
         <li><a href="outreach">Outreach</a></li>
-        <li><a href="#">CV</a></li> 
-        <li><a href="art-microscopy">Art & Microscopy</a></li> 
+        <li><a href="ELM-CV.pdf">CV</a></li>
+        <li><a href="art-microscopy">Art &amp; Microscopy</a></li>
       </ul>
     </div>
   </div>
@@ -131,7 +242,7 @@
 <div class="container">
 
   <div class="row">
-    
+
     <!-- Entries Column -->
     <div class="col-md-8">
       <h2>Projects</h2>
@@ -142,7 +253,7 @@
         <h3 class="project-title">PepC</h3>
         <img src="project1_image.jpg" alt="Evolutionary Biology Study Image">
         <p class="project-description">
-            I don't know I just made the website.        
+          I don't know I just made the website.
         </p>
       </div>
 
@@ -151,7 +262,7 @@
         <h3 class="project-title">DEEP</h3>
         <img src="project2_image.jpg" alt="Climate Adaptation Research Image">
         <p class="project-description">
-            I don't know I just made the website.        
+          I don't know I just made the website.
         </p>
       </div>
 
@@ -163,31 +274,13 @@
           I don't know I just made the website.
         </p>
       </div>
-
     </div>
-</div>
-    <!-- /.row -->
-       <!-- Sidebar with Contact Info -->
-       <div class="col-md-4", style = "height: auto;">
-        <div style="font-family: 'Franklin Gothic', sans-serif; font-size: 32px;"><b>Ellie Loew-Mendelson</b></div><br>
-        <p><b><a href="mailto:emendelson@uconn.edu">emendelson@uconn.edu</a></b><br>
-        <p>PhD Student - <a href="https://www.kheyduk.net/">Heyduk Lab</a><br>
-        Ecology and Evolutionary Biology<br>
-        University of Connecticut<br>
-        Storrs, CT<br>
-        U.S.A.<br>
-        </p>
-        </div>
-    
-  
-</div>
-<!-- /.container -->
- 
-<footer>
-  <p>© Ellie Loew-Mendelson | University of Connecticut</p>
-  <dd><a href="https://www.researchgate.net/profile/Ellie-Mendelson" target="_blank" rel="noopener noreferrer"><img src="researchgate.png"></a>
-    <a href="https://www.linkedin.com/in/ellie-mendelson-88a178195/" target="_blank" rel="noopener noreferrer"><img src="linkedin.png"></a></dd>
-</footer>
 
-</body>
-</html>
+    <!-- Sidebar with Contact Info -->
+    <div class="col-md-4" style="height: auto;">
+      <div style="font-family: 'Franklin Gothic', sans-serif; font-size: 32px;">
+        <b>Ellie Loew-Mendelson</b>
+      </div>
+      <br>
+      <p><b><a href="mailto:emendelson@uconn.edu">emendelson@uconn.edu</a></b></p>
+      <p>PhD Student - <a href="https://www.kheyduk.net/">Heyduk Lab</
